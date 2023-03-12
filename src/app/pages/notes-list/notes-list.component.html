@@ -11,9 +11,10 @@
   </div>
   <div class="notes-list">
     <app-note-card
-      *ngFor="let note of notes"
+      *ngFor="let note of notes; index as i"
       [title]="note.title"
       [body]="note.body"
+      [routerLink]="i.toString()"
     ></app-note-card>
   </div>
 
