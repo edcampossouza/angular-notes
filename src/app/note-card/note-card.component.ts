@@ -1,8 +1,10 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   Renderer2,
   ViewChild,
 } from '@angular/core';
@@ -15,6 +17,9 @@ import {
 export class NoteCardComponent implements OnInit {
   @Input() title: string = '';
   @Input() body: string = '';
+  @Input() link!: string;
+
+  @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter();
 
   @ViewChild('truncator') truncator!: ElementRef<HTMLElement>;
   @ViewChild('bodytext') bodyText!: ElementRef<HTMLElement>;
@@ -36,5 +41,8 @@ export class NoteCardComponent implements OnInit {
     } else {
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
     }
+  }
+  onXButtonClick() {
+    this.deleteEvent.emit();
   }
 }

@@ -15,4 +15,8 @@ export class NotesListComponent {
   ngOnInit() {
     this.notes = this.noteService.getAll();
   }
+
+  deleteNote(i: number) {
+    this.noteService.delete(i);
+  }
 }

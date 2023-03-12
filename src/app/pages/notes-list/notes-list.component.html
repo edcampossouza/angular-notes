@@ -14,7 +14,8 @@
       *ngFor="let note of notes; index as i"
       [title]="note.title"
       [body]="note.body"
-      [routerLink]="i.toString()"
+      [link]="i.toString()"
+      (delete)="deleteNote(i)"
     ></app-note-card>
   </div>
 
